@@ -1,0 +1,28 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <title>os-ayok</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>反転するぜ</h1>
+    <form id="inputForm">
+        <label for="inputText">入れろ！</label>
+        <input type="text" id="inputText" name="inputText" value="{{text}}" required>
+        <button type="submit">reverse</button>
+    </form>
+    <div id="outputDiv"></div>
+
+    <script>
+        $(document).ready(function(){
+            $('#inputForm').submit(function(e){
+                e.preventDefault();
+                var inputText=$('#inputText').val();
+                $.post('/rev',{text:inputText},function(data){
+                    $('#outputDiv').text(data);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
